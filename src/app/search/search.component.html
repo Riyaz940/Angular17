@@ -1,0 +1,13 @@
+<p>search works!</p>
+
+<div class="row" >
+    <div class="col-md-4" *ngFor = "let i of prod">
+        <div><img src={{i.pimage}}/></div>
+        <div>{{i.pid}}</div>
+        <div>{{i.pname | slice:0:3 | uppercase}}</div>
+        <div>{{i.price | currency:'INR'}}</div>
+        <div>{{i.price | discount : 30 | currency:'INR'}}</div>
+        <div>{{i.qty}}</div>
+        <div><a routerLink="/buy" [queryParams]="{a:i.pid,b:i.pname,c:i.price,d:i.pimage}" class="btn btn-success">Buy</a></div>    
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<p>products works!</p>
+<style>
+    /* .hi
+    {
+        color: red;
+        background-color: yellow;
+
+    }
+    .hello
+    {
+        color: red;
+        background-color: pink;
+
+    }
+    .welcome
+    {
+        color: red;
+        background-color: yellow;
+
+    }
+    .welcome2
+    {
+        color: red;
+        background-color: silver;
+
+    } */
+</style>
+{{'slk software' | uppercase}}
+
+<input type="button" value="Hide/Show" class="btn btn-info" (click)="displayHideShow()"/>
+
+<div class="row" >
+    <div class="col-md-4" *ngFor = "let i of prod">
+        <div *ngIf="Isvisible"><img src="http://localhost:3000/{{i.pimage}}"/></div>
+        <div>{{i.pid}}</div>
+        <div>{{i.pname | slice:0:3 | uppercase}}</div>
+        <div>{{i.pdescription}}</div>
+        <div>{{i.price | currency:'INR'}}</div>
+        <div>{{i.price | discount : 30 | currency:'INR'}}</div>
+        <div>{{i.qty}}</div>
+        <div><a routerLink="/buy" [queryParams]="{a:i.pid,b:i.pname,c:i.price,d:i.pimage,e:i.pdescription}" class="btn btn-success">Buy</a></div>    
+        </div>
+    </div>
+
+<!-- <div *ngFor="let item of prod; let i = index;let f = first;let l = last;let e = even;let o = odd;"[class.hi]="e" [class.hello]="o" [class.welcome]="f" [class.welcome2]="l">
+    {{i+1}}<br>
+    {{f}}<br>
+    {{l}}<br>
+    {{e}}<br>
+    {{o}}<br>
+{{item.pid}}<br>
+{{item.pname}}<br>
+{{item.price}}<br>
+{{item.qty}}<br>
+<img src={{item.pimage}}/><br>
+</div> -->

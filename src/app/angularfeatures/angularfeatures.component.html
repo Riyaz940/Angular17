@@ -1,0 +1,145 @@
+<p>angular-features works!</p>
+
+<hr>
+<!-- angular previous if condition-->
+
+<!-- <ng-container *ngIf="b; then one; else two"> </ng-container>
+ <ng-template #one>
+    <div>condition one executed</div>
+  </ng-template>
+
+  <ng-template #two>
+    <div>condition two executed</div>
+  </ng-template> -->
+
+  <!-- angular 17 if condition-->
+
+<!-- @if(b)  {
+    <div> condition one executed </div>
+}
+@else
+{
+    <div>    condition two executed  </div>
+}
+
+<hr> -->
+<!--if and else if condition-->
+<!-- <h2 *ngIf="type == 1; else two">One</h2>
+<ng-template #two>
+    <h2 *ngIf="type == 2; else three">Two</h2>
+</ng-template>
+<ng-template #three>
+    <h2>three</h2>
+</ng-template> -->
+<!--if else if micro syntax-->
+<!-- @if (type == 1) {
+    <h2>One</h2>
+} @else if(type == 2) {
+    <h2>Two</h2>
+} @else {
+    <h2>Three</h2>
+}
+<hr> -->
+<!--Switch case syntax-->
+<!-- <div [ngSwitch]="1">
+    <p *ngSwitchCase="0">You have first message</p>
+    <p *ngSwitchCase="1">You have second message</p>
+    <p *ngSwitchDefault>default executed</p>
+</div> -->
+<!--Angular 17 Switch case syntax-->
+<!-- @switch (type) {
+    @case (0) {
+      <div>You have first message</div>
+    }
+    @case (1) {
+      <div>You have second message</div>
+    }
+    @default{
+      <div>default executed</div>
+    }
+  }
+
+  <hr> -->
+  <!--for loop-->
+  <!-- <div *ngFor="let item of countries;let i = index;let f = first;let l = last;let e = even;let o = odd;">
+    First:{{f}} - Last:{{l}} - Even:{{e}} -Odd:{{o}} : {{item}}<br>   
+ </div>
+ <hr> -->
+ <!--for loop micro syntax angular 17-->
+ <!-- @for (item of countries; track item; let i = $index,f= $first,l = $last,e = $even, o = $odd){
+    First:{{f}} - Last:{{l}} - Even:{{e}} -Odd:{{o}} : {{item}}<br>   
+  }
+<hr> -->
+  <!--Lazzy loading-->
+  <!-- @defer (on timer(5s)){
+    <app-cool></app-cool>
+    } @placeholder (minimum 500ms){
+    <h1>some content will load here...coming soon</h1>
+}
+<hr> -->
+    <!--on interaction-->
+    <!-- <div style="border: 3px solid blue;">
+    @defer(on interaction) {
+        <app-cool></app-cool>
+        }  @placeholder (minimum 500ms){
+            <h1>placeholder</h1>
+            } 
+    </div>
+    <hr> -->
+    <!--on interaction with some parameters-->
+    <!-- <h1 #data>Click here to load</h1>
+    <div style="border: 3px solid blue;">
+        @defer(on interaction(data)) {
+            <app-cool></app-cool>
+            }  @placeholder (minimum 500ms){
+                <h1>placeholder</h1>
+                } 
+        </div>
+<hr> -->
+         <!--on hover-->
+    <!-- <h1 #data>Click here to load</h1>
+    <div style="border: 3px solid blue;">
+        @defer(on hover(data)) {
+            <app-cool></app-cool>
+            }  @placeholder (minimum 500ms){
+                <h1>placeholder</h1>
+                } 
+        </div>
+        <hr> -->
+        <!--on immediate :on all component is loaded-->
+    
+        <!-- @defer(on immediate) {
+            <app-cool></app-cool>
+            }  @placeholder (minimum 500ms){
+                <h1>placeholder</h1>
+                }  -->
+
+                <!-- <input type="button" value="click" (click)="show()"> -->
+                <div style="border: 3px solid blue;">
+                    <!-- @defer(when  b) {
+                        <app-cool></app-cool>
+                        }@loading (minimum 3000ms){
+                            <h1>loading</h1>
+                            } 
+                @placeholder (minimum 2000ms){
+                            <h1>placeholder</h1>
+                            }   -->
+
+                            @defer(on viewport(greeting)) {
+                                <app-cool></app-cool>
+                                }  @loading (minimum 3000ms){
+                                    <h1>loading</h1>
+                                    } 
+                                    @placeholder (minimum 3000ms){
+                                        <h1>placeholder</h1>
+                                        } 
+                    
+                        <br><br><br><br><br><br><br>
+                          <br><br><br><br><br><br><br><br>
+                          <br><br><br><br><br><br><br><br>
+                          <br><br><br><br><br><br><br><br><br>
+                          <br><br><br><br><br><br><br><br>
+                        </div>
+                          <div #greeting>Hello!</div>
+            
+                        

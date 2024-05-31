@@ -1,0 +1,24 @@
+<p>register works!</p>
+
+<div style="width: 250px; margin-left: 150px;">
+<form #frm="ngForm" (ngSubmit)="validate(frm.value)">
+
+<label>Enter username</label>
+<input type="text" name="uname" ngModel class="form-control"/>
+<label>Enter Password</label>
+<input type="password" name="password" ngModel class="form-control"/>
+<label>Select Gender</label>
+M<input type="radio" name="gender" value=1 ngModel class="form-checked"/>
+F<input type="radio" name="gender" value=0 ngModel class="form-checked"/><br>
+<label>Select DOB</label>
+<input type="date" name="DOB" ngModel class="form-control"/>
+<label>Enter Email</label>
+<input type="email" name="email" ngModel class="form-control"/>
+<label>Select Nationality</label>
+<select name="nationality" ngModel class="form-control">
+    <option>India</option>
+    <option>Japan</option>
+</select>
+<input type="submit" class="btn btn-primary"/>
+</form>
+</div>

@@ -1,0 +1,73 @@
+<p>login works!</p>
+
+<style>
+    .v
+    {
+        border: 3px solid green;
+        background-color: yellow;
+    }
+    .i
+    {
+        border: 3px solid red;
+        background-color: yellow;
+    }
+
+</style>
+
+<div style="width:500px; margin-left: 300px;">
+<form #frm="ngForm" (ngSubmit)="login(frm.value)">
+    
+    <span class="material-icons" style="color:blue;font: size 35px;">person</span>
+        {{frm.value| json}}
+    <input type="text" name="uname" #u="ngModel" minlength="5" ngModel required [class.v]="u.valid && u.touched" [class.i]="u.invalid && u.touched" class="form-control"/>
+    <!-- {{u.touched}}<br>
+    {{u.untouched}}<br> -->
+    <!-- {{u.dirty}}<br>
+    {{u.pristine}}<br> -->
+    {{u.valid}}<br>
+    {{u.invalid}}
+    <div class="btn btn-info">
+        <div *ngIf="u.errors?.['required'] && u.touched">Enter Username</div>
+        <div *ngIf="u.errors?.['required'] && u.invalid">Username is invalid</div>
+        <div *ngIf="p.errors?.['required'] && u.touched">Enter Password</div>
+    </div>
+    
+    <span class="material-icons"  style="color:blue;font-size:35x;">key</span>
+    <input type="password" name="password" #p="ngModel" ngModel required pattern="[a-z]{5}\d{3}" 
+    [class.v]="p.valid && p.touched" [class.i]="p.invalid && p.touched" class="form-control"/>
+    {{p.valid}}<br>
+    {{p.invalid}}
+    <br>
+    <!-- <input type="button" value="Login" (click)="validate()" class="btn btn-primary">&nbsp; -->
+    <!-- <input type="submit" [disabled]="frm.form.invalid" value="Login" class="btn btn-primary">&nbsp; -->
+    <input type="submit" value="Login" class="btn btn-primary">&nbsp;
+    <a routerLink="/register" class="btn btn-info">New user?Click here</a>
+</form>
+</div>
+<br>
+<div style="background-color: steelblue;color: white;">
+    {{status}}
+    {{result}}
+</div>
+<!--<div style="width:500px; margin-left: 300px;">
+     <form>
+    
+        <span class="material-icons" style="color: lightblue;font-size: 35px;" title="Enter the Username">
+            person
+            </span>
+        <input type="text" id="uid" class="form-control" />
+    
+        <span class="material-icons" style="color: lightblue;font-size: 35px;" title="Enter the Password">
+            key
+            </span>
+        <input type="password" id="pwd" class="form-control"/>
+    <br>
+        <input type="button" value="Login" class="btn btn-primary" (click)="validate()"/>&nbsp;
+        <a routerLink="/register" class="btn btn-info">New user?Click here</a>
+    </form>
+    </div>
+    <br>
+    <div style="background-color: steelblue;color: white;">
+        {{status}}
+    </div>
+     -->

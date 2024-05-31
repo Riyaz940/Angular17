@@ -1,0 +1,6 @@
+<h1>Welcome to Parent Page</h1>
+<input type="text" [(ngModel)]="mydata"/><br>
+{{childmsg}}
+<hr>
+<app-child [childdata]="mydata" (myevent)="readmessagefromchild($event)"></app-child>
+

@@ -1,0 +1,40 @@
+<h1>App Component</h1>
+
+<div class = "container">  
+  <nav class = "navbar bg-dark navbar-dark">  
+ <a class = "navbar-brand"  routerLink="/products"> LOGO </a>  
+ <ul class = "nav">  
+ <li class = "nav-item">  
+ <a class = "nav-link" routerLink = "/products"> Products </a>  
+ </li>  
+ <li class = "nav-item">  
+ <a class = "nav-link" routerLink = "/buy"> Buy </a>  
+ </li>  
+ <li class = "nav-item">  
+  <a class = "nav-link" routerLink = "/feedback"> Feedback </a>  
+  </li>  
+  <li class = "nav-item">  
+    <a class = "nav-link" routerLink = "/login"> Login </a>  
+  </li>
+  <li class = "nav-item">  
+    <a class = "nav-link" routerLink = "/login"> Logout </a>  
+  </li>
+  
+  <li class = "nav-item">  
+    <a class = "nav-link" routerLink = "/parent"> Parent </a>  
+  </li>
+  <li class = "nav-item">  
+    <a class = "nav-link" routerLink = "/ang"> Angular 17 </a>  
+  </li>
+ <!-- <li class = "nav-item">  
+ <a class = "nav-link" href = "#"> Third </a>  
+ </li>   -->
+ </ul>  
+ <form class="d-flex justify-content-end">  
+ <input class="form-control me-2" type="text" id="txtsearch" placeholder="Search">  
+ <button class="btn btn-success" type="button" (click)="show()" >Search</button>  
+ </form>  
+ </nav>  
+</div>
+
+<router-outlet></router-outlet>
