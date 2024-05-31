@@ -1,0 +1,546 @@
+Command to install typescript:npm minstall
+
+npm -?node package manager
+ --We can install library, packages and  bootstraps
+
+npm install bootstrap
+npm install jquery
+npm install packages
+
+We have node.js command but no angular commands,
+To install angular, we should have npm
+
+Command ti install Angular : npm i -g @angular/cli
+
+-g means->globally install angular cli on our machine
+
+npm install -g @angular/cli
+ng version
+
+Command to create a project:
+ng Online --routing --no-standalone
+
+Online>ng serve
+C:\Users\User\Riyaz>dir
+C:\Users\User\Riyaz>cd online
+C:\Users\User\Riyaz\Online>ng serve
+? Would you like to share pseudonymous usage data about this project with the Angular Team
+at Google under Google's Privacy Policy at https://policies.google.com/privacy. For more
+details and how to change this setting, see https://angular.io/analytics. No
+
+
+Angular 17 helps to create a prokect in 2 ways 1.Standalone 2.Shared Project
+
+Small event aboe the method/class ->Decorator
+
+templateUrl:View page
+
+
+Online>ng g c chennai --flat
+
+ng g module mymodule
+
+
+
+
+
+
+-------------------------
+ng g c <cname>
+
+command to generate component module inside specific module
+
+ng g c hyd --inline-template --inline-style
+ng g c hyd --inlinetemplate --inlinestyle
+
+
+22-May-2024 : Classes and 
+
+
+Page where we write logic:html ts,css
+
+Bindings:
+Interpolation=>{{}}
+Property binding =>[]
+Event binding:any event you want call give it in (click) =>()
+Apply style on condition=>[class.hi]="c"
+Class binding:
+
+
+--------------
+1.Create a component that changes the text color of a paragraph when a button is clicked
+2.Create a component with an image element where the source of the image is dynamically bound to a property.
+3.Create a component that changes the size of a div when a button is clicked
+4. Increase and Decrease the div tag
+
+Structural Directives:
+
+=============23rd May 2024======
+https://drive.google.com/drive/folders/10LnkXXpazom2HlXMJR7RA4tr4bkzrLV0?usp=sharing
+
+cls
+cd onlineshop
+
+=============Basic shopping site=======
+view products
+login
+register
+buy
+notfound
+feedback
+search
+
+Routing:
+Routing allows the navigation btn diff components or views
+it allows the user to create a SPA with multiple views
+
+http://localhost:4200/login  ---->loads login component
+http://localhost:4200/products  ---->loads products components
+http://localhost:4200/home  ---->loads home component
+
+which path which components to be loaded.
+const routes: Routes = [
+{
+  path:'login', component:LoginComponent
+},
+{
+  path:'products', component:ProductsComponent
+},
+}
+
+<router-outlet>-> it is like a place holder
+
+A place holder that let the user to load the components dynamically based on the curent route states
+
+
+To make page is load as bydefault page:
+{
+    path:'', component:ProductsComponent
+  },
+
+
+Notfoundpage use:
+{
+  path:'**',component:NotfoundComponent
+}
+
+here ** means-> other than the top given values
+
+
+----------To install bootstrap--------
+npm install bootstrap
+
+after installing bootstrat it will be reflect in node_modules
+
+and need to add file paths in angular.json build file
+
+in "build"
+
+
+"styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
+          },
+
+To install the icons:
+ng add @angular/material
+
+
+---
+href->reloads ther page and routerlink->asynchronous call
+router-outlet ->purpose-it is like placeholder which carries all components
+
+===============24th May 2024====================
+Login page cover with all needed validations
+
+
+Forms:
+========================
+1.Template Driven Form
+2. Model Driven Form(Reactive Forms)
+
+
+Template-Refers to HTML page
+Model-Refers to Component pagent page
+
+whatis TDF?
+In TDF, the form structure and behaviour are primarily defined in the template(HTML)
+
+1.Easy to use
+2.Suitable for simple scenarios
+3.Miinimal Component code
+4.Template Driven forms provide implicit validn thro directives like required,min,maxlength,etc These valdns are directly use in the template
+
+**Package name or Reactive form when to use Model Driven form
+How to use TDF?
+---------------
+To work with TDF, you need to import FormsModule form @angular/forms in your AppModule
+
+include in app.module.ts under imports
+imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatIconModule,
+    FormsModule 
+  ],
+
+NgForm Directive: This directive binds the form element and tracks the form state.
+
+we use the ngForm directive by adding  #contactForm="ngForm to the <form> element. This directive:
+
+<form #myfrm=ngForm>
+
+//Here #myfrm hold all UI values and form states which is boolean type(true/false)
+</form>
+
+
+ngModel->Binds the textbox value to varaible
+
+States: All state key words returns boolean type(true/false)
+{{m.touched}} -> true if user just focus or click on the textbox
+{{m.untouched}}
+{{m.dirty}} -> true if modify textbox value
+{{m.pristine}}
+{{m.valid}} -> true if required
+{{m.invalid}}
+
+
+ngForm ->form tag (#f = ngForm) contains all UI control values(textbox,radio, list, dropdown)
+#f -> all form control values
+ngModel-> any UI controls (textbox,radio, list, dropdown)
+
+To bind the control values to the form variable
+
+#uid = ngModel : 
+contains the state of the textbox
+
+
+========================================
+
+
+Reactive Forms (Model Driven Form)
+ It provides a more programmatic and flexible way to work with forms in Angular.
+Unlike TDF, Reactive forms are driven by the underlying form model defined in the component class(Typescript)
+
+Model = ts file
+Template = HTML file
+
+
+FromGroup :             ngForm(hold all textbox values)/state
+It's a class in Angular that represents a froup of form control.It can contain one or more FormCOntrol instances
+
+FormControl :           ngModel
+Represents an individual form input
+
+username: new FormControl("admin",[Validators.required,Validators.pattern("[0-9]+")]),
+pwd: new FormControl("", Validators.maxlength(3))
+
+
+this.f = new FormGroup({
+	username: new FormControl("admin",[Validators.required,Validators.pattern("[0-9]+")]),
+	pwd: new FormControl("", Validators.maxlength(3))
+
+})
+
+<form formgroup="#f">
+<input type=text FormControlName=username/>
+<input type=text FormControlName=pwd/>
+</form>
+
+FormControlName :       name
+Validators :            validation logic(input text required pattern) will be rolled out and added in validators file
+
+
+======================================================================
+Services in Angular:
+
+Service=Library
+
+-Service is similar to package or library file.
+-it only contains a tool which is common to all component file
+-any component can inherit the service file
+
+
+what is command to create  service file?
+ng g service servicename
+
+service file not have UI file . only .spec and .ts files
+
+This file will not have template and style.
+
+C:\Users\User\Riyaz\onlineshop>ng g service onlineservice
+
+Two way to call service file
+1.Dependency injection
+2.
+
+================================================================================
+
+Pipes :  Transforming data
+The ang pipe takes the raw data as input and then transforms the 
+pipes will not have UI file . only .spec and .ts files
+
+* Introduction of pipes
+* Working with Built-in Pipes
+* Creating Custom Pipes
+* Summary
+
+Below are the pipes
+
+.Uppercase
+.Date
+.LowerCase
+.Slice ->To display part of the data
+Allows us to dsiplay part of a list.
+expression | slice:start[:end]
+
+.JSON
+.Number -> <p>{{98745 | number}}</p>
+<h2>{{5.678|number:'1.2-3'}}</h2>
+005.678
+
+1=min no.of integer digit
+2=min no. of decimal digit
+3=max no.of decimal digit
+.Percent
+.Currence
+
+
+ng g pipe pipename
+
+=========================May 28th 2024========
+
+Login page:
+
+Session state
+logi and logout
+read from db
+
+
+how to connect database from angular application?
+
+====QueryParams=====
+
+how to read data from query string and display in buy page?
+We have separate service called ->ActivatedRoute (which helps to read data from query string)
+
+External stores like querystring , cookeis to read data always use subscribe method.
+
+Two-way binding syntacx: [(ngModel)]
+Declare a global variable and match to textbox
+<input type="text" [(ngModel)]="hello" class="form-control"/> 
+
+hello is a global variable
+
+=====Routeguard
+
+Routeguard means secure or block the page
+
+ng g guard guardname
+
+creates 2 file as
+src/app/myguard.guard.spec.ts
+src/app/myguard.guard.ts
+
+
+To make Buy component as conditional, in app.routing.module.ts file
+
+{
+  path:'buy', component:BuyComponent,canActivate:[myguardGuard]
+}
+canActivate is boolean type
+
+
+===Router Service 
+constructor(public ob:Router){}
+
+this.ob.navigate(['products'])
+
+
+===========Summary========
+1. router --> navigation
+2. ActivatedRoute -> reads the value from the current url(querystring)
+3. search features
+4. RouteGuard -> ng g guard guardname
+5. session ->sessionStorage.setitem(uid,value) and default is null in place of uid
+6. queryParams -> key value pair 
+		  {pid:item.pid,pname:item.pname}
+
+=========May 29th 2024 Session===
+
+How to work with database in angular?
+
+Angular is a complete front end applications.
+
+Angular uses web api to interact with database.
+
+Learn api in node.js
+
+Angular->node.js->Database
+
+==============
+Use node.js to pull database data and render to angular.
+
+need to install packages in node js
+ install NodeJS --already installed
+ install Express
+ install mssql -->generates class to work with database
+ install msnodesqlv8
+ npm install cors --> To allow request from diff site
+
+ node nodeserver.js
+
+Observable<> helps as asynchronous call
+
+Need to add/import HttpClientModule in app.module.ts file
+
+=============May 30th 2024================
+
+Work with multiple components:
+
+
+Parent Component and Child Component
+
+Parent component- which carries the data
+
+
+C:\Users\User\Riyaz\onlineshop>ng g c parent
+C:\Users\User\Riyaz\onlineshop>ng g c child
+
+<app-child>/<app-child> ->need add in parent html page
+
+how to communicate from parent copmonent to chile component?
+->@input decorator
+how to communicate from child copmonent to parent component?
+->@output decorator
+
+
+While sending data from child to parent can be achieved through events.
+ emit() is a event to act as a click
+
+Angular Life Cycle Hooks:
+
+Constructor:
+In ang avoid using constructor. use ngOnInit
+why not costrucotr? bcs ment for initializing class variable, not component variables.(on initialization component not yet triggered)
+ngOnChanges:
+Invoked every time there is a change in one of the input prop of the component
+
+ngOnInit:
+only called once after the component
+
+OnDestroy:
+
+======May 31st 2024=================
+
+Angular 17 New Features:
+how to use .spec.ts file -> this is used for testing 
+
+how to upload projects to server? tips
+
+src folder backup
+
+
+Lazy loading:
+
+@defer (on time(5s)){
+
+<app-cool></app-cool>
+}
+
+
+=========Testing==============
+
+ng new mytestprj
+
+app.module.ts contains
+ng model file to register all component
+classes
+
+
+Need to create a service file:
+
+ng g service myservice
+
+describe('MyserviceService', () => {
+  let service: MyserviceService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(MyserviceService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
+
+describe() -> is a root block, which hold the collection of tests.
+
+To execute spect.ts file we nees to use ->ng test
+
+ng g pipe testpipe
+
+
+=============
+anandtrn@gmail.com
+https://drive.google.com/drive/folders/1XUSv5-B-cmTQH-651ukntuUZXwCRKkXL?usp=sharing
+
+===============
+
+Steps to deploy angular project in IIS
+==========================================
+
+1. ng serve => run the project
+2. ng build -- configaration production
+3. It will create dist folder which contains
+               -> .js
+	       -> assets
+	       -> index.html
+4. To deploy to IIS server
+    ->Ensure IIS to be installed
+    ->URL Rewriting ->urlrewrite tool(http://)
+5. Create a folder (c:\testing)
+   copy the content of dist folder to testing folder
+6. Open IIS (Run->inetmgr)
+   -> rightclick on default website =>application
+      1. url (c:\testing) ->physical path
+      2. virtual directory name
+
+Application Browser URL: http://localhost/myproj (virtual path)
+7. create web.config file
+
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+
+<system.webServer>
+  <rewrite>
+    <rules>
+      <rule name="Angular Routes" stopProcessing="true">
+        <match url=".*" />
+        <conditions logicalGrouping="MatchAll">
+          <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+          <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+        </conditions>
+        <action type="Rewrite" url="./index.html" />
+      </rule>
+    </rules>
+  </rewrite>
+</system.webServer>
+
+</configuration>
+	
+you need to paste in : myproj
+
+
+   set default page =>index.html
+
+8. Reset the IIS
+   command : iisreset
+9. open browser http://localhost/myproj
+
+   content on index page 
+
+ 			

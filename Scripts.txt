@@ -1,0 +1,59 @@
+
+--Create database angularonlinedb
+--use angularonlinedb;
+
+CREATE TABLE products(
+	[pid] [varchar](10) primary key,
+	[pname] [varchar](20) NULL,
+	[description] [varchar](50) NULL,
+	[price] [int] NULL,
+	[pimage] [varchar](50) NULL
+)
+
+insert into products values(
+'p001'	,'TV',	'Samsung co',	10000,	'images/tv.jpg'),
+('p002','Mobile' ,	'Samsung'	,10000	,'images/Mobile.jpg'),
+('p003'	,'AC',	'BlueStar'	, 8000	,'images/AC.jpg'),
+('p004'	,'WashingMachine',	'Videocon'	,12000,	'images/WashingMachine.jpg'),
+('p005'	,'Fan',	'Bajaj',	4000,	'images/Fan.jpg'),
+('p006'	,'Monitor',	'Dell',	6000 ,	'images/Monitor.jpg'),
+('p007'	,'Mouse',	'Dell',	900,	'images/Mouse.jpg')
+
+select * from products;
+
+
+---------------------------------------------------------------
+
+create table Register
+(
+uname varchar(20) primary key,
+password varchar(20),
+gender bit,
+DOB datetime,
+email varchar(50),
+nationality varchar(20),
+)
+
+
+CREATE TABLE userorders
+(
+	[tranid] [int] identity(1,1) primary key,
+	[username] [varchar](20) NULL,
+	[pid] [varchar](10) NULL,
+	[transdate] [date] NULL,
+	[qty] [int] NULL
+)
+
+---------
+
+select * from products;
+select * from Register;
+select * from userorders;
+
+--truncate table userorders
+select * from userorders;
+
+select count(*) as cnt from register where uname = 'Riyaz' and password='admin123'
+
+
+
